@@ -1,0 +1,131 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="/resources/css/animate.css" rel="stylesheet" type="text/css"/>
+    <script src="/resources/js/jquery-ultimate-fancy-form.min.js"></script>
+    <link href="/resources/css/jquery-ultimate-fancy-form.css" rel="stylesheet" type="text/css"/>
+
+
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+
+    <link href="/resources/css/custom.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+
+<div class="container row">
+    <div class="form-container">
+        <form:form class="form form-horizontal component-uff"
+              action="#" th:action="@{save/}" th:object="${invoice}" method="post">
+            <h2 class="text-center">Fatura</h2>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 >Fatura Bilgileri</h4>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Müşteri</label>
+                                    <div class="col-sm-9">
+
+                                        <select id="customer_id" class="form-control" title="Marka Seçiniz">
+                                            <option th:each="data : ${customers}" th:value="${data.customer_id}" th:text="${data.customer_name}"></option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Not</label>
+                                    <div class="col-sm-9">
+
+                                    <textarea class="selectpicker form-control" id="invoice_information_note"
+                                              name="invoice_information_note"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Ücret</label>
+                                    <div class="col-sm-9">
+
+                                        <input type="text" class="form-control" id="invoice_amount" name="invoice_amount" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">Tarih</label>
+                                    <div class="col-sm-9">
+
+                                        <input type="date" class="form-control" id="invoice_service_date"
+                                               name="invoice_service_date" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 >Ürün Bilgileri</h4>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Marka</label>
+                                    <div class="col-sm-9">
+
+                                        <select id="brand_id" class="form-control" title="Seçiniz">
+                                            <option th:each="data : ${brands}" th:value="${data.brand_id}" th:text="${data.brand_name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Kategori</label>
+                                    <div class="col-sm-9">
+
+                                        <select id="category_id" class="form-control" title="Seçiniz">
+                                            <option th:each="data : ${category}" th:value="${data.category_id}" th:text="${data.category_name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Model</label>
+                                    <div class="col-sm-9">
+
+                                        <select id="nmodel" class="form-control" title="Seçiniz">
+                                            <option th:each="data : ${models}" th:value="${data.model_id}" th:text="${data.model_name}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" >Ürün</label>
+                                    <div class="col-sm-9">
+
+                                        <select id="product_id" name="product_id" class="form-control" title="Ürün Seçiniz">
+                                            <option value="0">Hot Dog, Fries and a Soda</option>
+                                            <option value="1">Burger, Shake and a Smile</option>
+                                            <option value="2">Sugar, Spice and all things nice</option>
+                                            <option value="3">Baby Back Ribs</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="pager">
+                            <li class="right">
+                                <button name="submit" class="btn btn-success" type="submit" value="1">Ekle</button>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </form:form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Users</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/resources/css/custom.css" />
+
+</head>
+<body onload="load();">
+
+
+<div class="container row">
+    <div class="col-md-12 form-container">
+        <h2 class="text-center">Faturalar</h2>
+        <input class="form-control" id="myInput" type="text" placeholder="Arama yap.." />
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Müşteri</th>
+                <th>Ürün</th>
+                <th>Tarih</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+            <tr th:each="data : ${datas}">
+                <td th:text="${data.invoice_id}"/>
+                <td th:text="${data.customer_id}"/>
+                <td th:text="${data.product_id}"/>
+                <td th:text="${data.invoice_service_date}"/>
+                <td> <a class="btn btn-info fa fa-pencil" th:href="@{edit/{id}(id=${data.invoice_id})}"  > Edit </a>
+                    <a class="btn btn-danger fa fa-trash-o" th:href="@{userDelete/{id}(id=${data.invoice_id})}"  > Delete </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
