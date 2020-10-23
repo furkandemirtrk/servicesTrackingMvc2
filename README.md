@@ -1,1 +1,2 @@
-# servicesTrackingMvc2
+# Service Tracking App
+# Teknologies used in this project :  Java, Spring MVC, Hibernate, JPA, Thymeleaf 
